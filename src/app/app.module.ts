@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-import { FirebaseService} from './services/firebase.service';
+import { FirebaseService } from './services/firebase.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -13,13 +13,15 @@ import { NavvarComponent } from './components/navvar/navvar.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
 import { EditListingComponent } from './components/edit-listing/edit-listing.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 
 const appRoutes: Routes = [
-  { path:'',component:HomeComponent },
-  { path:'listings',component:ListingsComponent },
-  { path:'add-listing',component:AddListingComponent }
+  { path: '', component: HomeComponent },
+  { path: 'listings', component: ListingsComponent },
+  { path: 'listing/:id', component: ListingComponent },
+  { path: 'add-listing', component: AddListingComponent }
 ]
 
 
@@ -53,6 +55,7 @@ const firebaseAuthConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    FlashMessagesModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     RouterModule.forRoot(appRoutes)
   ],
